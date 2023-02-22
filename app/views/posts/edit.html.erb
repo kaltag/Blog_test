@@ -1,0 +1,8 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing post</h1>
+
+  <%= render 'form', post: @post %>
+
+  <%= link_to 'Show this post', @post, class: 'relative py-2.5 px-5 border border-transparent border-black text-md md:text-sm leading-5 text-center font-medium rounded-md text-black bg-white hover:bg-gray-200 focus:outline-none focus:border-gray-700 focus:shadow-outline-green active:bg-gray-300 transition duration-150 ease-in-out' %>
+  <%= link_to 'Back to posts', posts_path, class: 'relative py-2.5 px-5 border border-transparent border-black text-md md:text-sm leading-5 text-center font-medium rounded-md text-black bg-white hover:bg-gray-200 focus:outline-none focus:border-gray-700 focus:shadow-outline-green active:bg-gray-300 transition duration-150 ease-in-out' %>
+</div>

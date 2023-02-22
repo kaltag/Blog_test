@@ -1,0 +1,14 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Posts</h1>
+    <%= link_to 'New post', new_post_path, class: 'py-2.5 px-5 border border-transparent text-md md:text-sm leading-5 text-center font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out' %>
+  </div>
+
+  <div id="posts" class="min-w-full mt-10 bg-white p-4 rounded-xl">
+    <%= render @posts %>
+  </div>
+</div>
