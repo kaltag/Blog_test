@@ -1,0 +1,42 @@
+<div class="w-full h-auto flex flex-col md:flex-row">
+  <div class="w-full md:w-5/12 my-8">
+    <div class="min-h-0 flex items-center justify-center mx-6 md:mx-12">
+      <div class="max-w-xl w-full">
+        <div class="sm:mb-10 mb-8">
+          <h2 class="mt-6 text-left sm:text-3xl text-xl leading-9 font-extrabold text-gray-900"><%= t('.log_in') %></h2>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="rounded-md">
+            <div>
+              <%= f.label :email, class: 'text-md md:text-sm text-gray-700 font-medium' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'appearance-none rounded-md relative block w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 text-md md:text-sm' %>
+            </div>
+            <div class="mt-4">
+              <%= f.label :password, class: 'text-md md:text-sm text-gray-700 font-medium' %>
+              <%= f.password_field :password, autocomplete: 'current-password', class: 'appearance-none rounded-md relative block w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 text-md md:text-sm' %>
+            </div>
+            <div class="mt-6 flex items-center justify-between flex-col sm:flex-row sm:justify-items-start">
+              <div class="mb-2 sm:mb-0">
+                <% if devise_mapping.rememberable? %>
+                  <div class="flex items-center">
+                    <%= f.check_box :remember_me, class: 'form-checkbox h-3 w-3 text-indigo-600 transition duration-150 ease-in-out' %>
+                    <%= f.label :remember_me, t('.remember_me'), class: 'ml-2 block text-sm sm:text-md leading-5 text-gray-900' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <%= f.submit t('.log_in_button'), class: 'relative w-full py-2 px-4 border border-transparent text-md md:text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out' %>
+          </div>
+        <% end %>
+        <div class="leading-5 pt-4">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to t('.forgot_password'), new_password_path(resource_name), class: 'text-sm sm:text-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150' %><br>
+            <%= link_to t('.create_account'), new_registration_path(resource_name), class: 'text-sm sm:text-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<nav class="bg-green-500">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <%= link_to image_tag('bloglogo.svg', class: 'object-fill md:h-8 h-6', alt: 'BlogLogo'), root_path %>
+        </div>
+
+        <div>
+          <div class="ml-10 flex items-baseline space-x-4">
+            <%= link_to root_path, class: "#{active_link(root_path)} flex items-center px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+              <div class="pl-3">
+                <%= t :blog %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex z-30 items-center justify-center">
+
+        <div class="relative inline-block text-left dropdown border-r border-gray-300 pr-4 xl:-mr-4">
+          <button class="flex justify-center w-full text-gray-100 hover:text-gray-200 active:text-gray-500" type="button" aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117">
+            <p class="uppercase text-center tracking-widest"> <%= I18n.locale.to_s %></p>
+          </button>
+          <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+            <div class="absolute right-0 w-32 mt-2 py-1 origin-top-right bg-white border border-gray-200 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+              <%= link_to locale: :en do %>
+                <div class="flex hover:bg-gray-200 p-1 -mt-1 rounded-t-md">
+                  <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="24">
+                      <clipPath id="s">
+                        <path d="M0,0 v30 h60 v-30 z" />
+                      </clipPath>
+                      <clipPath id="t">
+                        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+                      </clipPath>
+                      <g clip-path="url(#s)">
+                        <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4" />
+                        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+                      </g>
+                  </svg>
+                  <p> English </p>
+                </div>
+              <% end %>
+              <%= link_to locale: :ru do %>
+                <div class="flex hover:bg-gray-200 p-1 -mb-1">
+                  <svg class="mx-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 512 512">
+                    <circle style="fill:#F0F0F0;" cx="256" cy="256" r="256" />
+                    <path style="fill:#0052B4;" d="M496.077,345.043C506.368,317.31,512,287.314,512,256s-5.632-61.31-15.923-89.043H15.923 C5.633,194.69,0,224.686,0,256s5.633,61.31,15.923,89.043L256,367.304L496.077,345.043z" />
+                    <path style="fill:#D80027;" d="M256,512c110.071,0,203.906-69.472,240.077-166.957H15.923C52.094,442.528,145.929,512,256,512z" />
+                  </svg>
+                  <p> Русский </p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <% if user_signed_in? %>
+          <div class="ml-10 text-white">
+            <%= current_user.email %>
+          </div>
+          <div class="py-1 ml-4 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+            <%= link_to t(:sign_out), destroy_user_session_path, data: { turbo_method: :delete }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
+          </div>
+        <% else %>
+          <div class="ml-10 flex items-baseline space-x-4">
+            <%= link_to new_user_registration_path, class: 'bg-yellow-300 text-gray-800 flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-yellow-200 focus:outline-none focus:bg-gray-700' do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div class="pl-3">
+                <%= t :sign_up %>
+              </div>
+            <% end %>
+            <%= link_to new_user_session_path, class: "#{active_link(new_user_session_path)} bg-white text-gray-800 flex items-center px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <div class="pl-3">
+                <%= t :log_in %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .dropdown:focus-within .dropdown-menu {
+    opacity:1;
+    transform: translate(0) scale(1);
+    visibility: visible;
+  }
+</style>
