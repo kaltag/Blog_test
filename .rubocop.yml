@@ -30,9 +30,6 @@ Layout/LineLength:
 Metrics/BlockLength:
   AllowedMethods: ['feature']
 
-Metrics/LineLength:
-  Max: 120
-
 Metrics/MethodLength:
   Max: 30
 

@@ -1,0 +1,44 @@
+en:
+  devise:
+    registrations:
+      new:
+        registration: "Sign Up"
+        account_confirmation: "Didn't receive confirmation instructions?"
+        unlock_message: "Didn't receive unlock instructions?"
+        submit_button: "Sign Up"
+        log_in_path: "Already have an account? Log In"
+      edit:
+        profile: "Profile"
+        waiting_for_confirmation: "Waiting for confirmation for:"
+        tip: (leave the field blank if you don't want to change it)
+        current_password: (we need your current password to confirm your changes)
+        save_button: "Save"
+        back_button: "Back"
+        delete_button: "Delete account"
+
+    sessions:
+      new:
+        log_in: "Log in"
+        remember_me: "Remember me"
+        forgot_password: "Forgot your password?"
+        log_in_button: "Log in"
+        confirmation_message: "Didn't receive confirmation instructions?"
+        unlock_message: "Didn't receive unlock instructions?"
+
+    unlocks:
+      new:
+        resend: "Resend unlock instructions"
+        enter_email: "Enter your email..."
+        submit_button: "Submit"
+        create_account: "Create an account!"
+        log_in: "Already have an account? Log In"
+        forgot_password: "Forgot your password?"
+
+    confirmations:
+      new:
+        resend: "Resend confirmation instructions"
+        enter_email: "Enter your email..."
+        submit_button: "Submit"
+        create_account: "Create an account!"
+        log_in: "Already have an account? Log In"
+        forgot_password: "Forgot your password?"

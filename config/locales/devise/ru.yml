@@ -1,0 +1,44 @@
+ru:
+  devise:
+    registrations:
+      new:
+        registration: "Регистрация"
+        account_confirmation: "Не получили инструкцию о подтверждении аккаунта?"
+        unlock_message: "Не получили инструкции по разблокировке?"
+        submit_button: "Зарегистрироваться"
+        log_in_path: "Уже есть аккаунт? Войти"
+      edit:
+        profile: "Профиль"
+        waiting_for_confirmation: "В Настоящее время ожидает подтверждения для:"
+        tip: (оставьте поле пустым, если не хотите его менять)
+        current_password: (нам нужен ваш текущий пароль для подтверждения ваших изменений)
+        save_button: "Сохранить"
+        back_button: "Назад"
+        delete_button: "Удалить аккаунт"
+
+    sessions:
+      new:
+        log_in: "Войдите в свой аккаунт"
+        remember_me: "Запомнить меня"
+        forgot_password: "Забыли пароль?"
+        log_in_button: "Войти"
+        confirmation_message: "Не получили инструкцию о подтверждении аккаунта?"
+        unlock_message: "Не получили инструкции по разблокировке?"
+
+    unlocks:
+      new:
+        resend: "Повторная разблокировка аккаунта"
+        enter_email: "Введите адрес почты..."
+        submit_button: "Отправить запрос"
+        create_account: "Создайте аккаунт!"
+        log_in: "У вас уже есть аккаунт? Войдите!"
+        forgot_password: "Забыли пароль?"
+
+    confirmations:
+      new:
+        resend: "Повторное подтверждение аккаунта"
+        enter_email: "Введите адрес почты..."
+        submit_button: "Отправить запрос"
+        create_account: "Создайте аккаунт!"
+        log_in: "У вас уже есть аккаунт? Войдите!"
+        forgot_password: "Забыли пароль?"
