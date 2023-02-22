@@ -64,7 +64,7 @@
 
         <% if user_signed_in? %>
           <div class="ml-10 text-white">
-            <%= current_user.email %>
+            <%= link_to current_user.email, edit_user_registration_path, class: 'cursor-pointer', role: 'menuitem' %>
           </div>
           <div class="py-1 ml-4 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
             <%= link_to t(:sign_out), destroy_user_session_path, data: { turbo_method: :delete }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
