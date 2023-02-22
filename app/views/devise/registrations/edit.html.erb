@@ -1,43 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render 'devise/shared/error_messages', resource: %>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+<div class="h-auto mx-10 rounded-lg bg-white">
+  <div class="flex flex-col md:flex-row">
+    <div class="w-full md:w-1/4 h-auto border-r-2 ">
+      <div class="flex justify-start items-center bg-indigo-200">
+        <div class="bg-indigo-600 w-1 h-12"></div>
+        <svg class="w-6 h-6 text-indigo-600 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <p class="text-indigo-600 text-lg font-semibold tracking-wide"><%= t('.profile') %></p>
+      </div>
+    </div>
+    <div class="w-full md:w-2/4 h-auto">
+      <div class="px-6 pt-6 pb-4">
+        <h1 class="text-gray-900 text-2xl tracking-wide font-normal"><%= t('.profile') %></h1>
+      </div>
+      <div class="flex flex-col md:flex-row mt-3 px-6">
+        <div class="bg-white w-full md:w-3/4 h-auto pr-4">
+          <div class="flex flex-col">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render 'devise/shared/error_messages', resource: %>
+              <div class="mt-4">
+                <%= f.label :email, class: 'text-md md:text-sm text-gray-700 font-medium' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'rounded-lg w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none text-md md:text-sm' %>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div><%= t '.waiting_for_confirmation' %><%= resource.unconfirmed_email %></div>
+              <% end %>
+              <div class="mt-4">
+                <%= f.label :password, class: 'text-md md:text-sm text-gray-700 font-medium' %><br><i><%= t '.tip' %></i><br>
+                <%= f.password_field :password, autocomplete: 'new-password', class: 'rounded-lg w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none text-md md:text-sm' %>
+              </div>
+              <div class="mt-4">
+                <%= f.label :password_confirmation, class: 'text-md md:text-sm text-gray-700 font-medium' %>
+                <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'rounded-lg w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none text-md md:text-sm' %>
+              </div>
+              <div class="mt-4">
+                <%= f.label :current_password, class: 'text-md md:text-sm text-gray-700 font-medium' %> <br><i><i><%= t '.current_password' %></i><br>
+                <%= f.password_field :current_password, autocomplete: 'current-password', class: 'rounded-lg w-full mt-1 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none text-md md:text-sm' %>
+              </div>
+              <div class="mt-4">
+                <%= f.submit t('.save_button'), class: 'w-18 py-2 px-3 border border-transparent text-md md:text-md leading-5 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none active:bg-gray-700 transition duration-150 ease-in-out' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-auto flex justify-end p-6">
+        <%= link_to t('.back_button'), :back, class: 'ml-4 w-18 py-2 px-3 border border-transparent text-md md:text-md leading-5 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none active:bg-gray-700 transition duration-150 ease-in-out' %>
+        <%= button_to t('.delete_button'), registration_path(resource_name), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'ml-4 w-18 py-2 px-3 border border-transparent text-md md:text-md leading-5 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none active:bg-gray-700 transition duration-150 ease-in-out' %>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br>
-    <%= f.password_field :password, autocomplete: 'new-password' %>
-    <% if @minimum_password_length %>
-      <br>
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br>
-    <%= f.password_field :current_password, autocomplete: 'current-password' %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Update' %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete %></p>
-
-<%= link_to 'Back', :back %>
+</div>
