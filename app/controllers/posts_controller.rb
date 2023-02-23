@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @posts = Post.order(created_at: :desc).page params[:page]
+    if user_signed_in? && params[:user_id]
+      @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc).page params[:page]
+    else
+      @posts = Post.order(created_at: :desc).page params[:page]
+    end
   end
 
   def show
