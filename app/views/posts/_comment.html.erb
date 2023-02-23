@@ -1,0 +1,8 @@
+<div class="my-4 flex items-center">
+  <%= image_tag('https://picsum.photos/200/300', class: 'h-12 w-12 mr-4 object-cover border rounded-full', alt: 'avatar') %>
+  <div class="">
+    <h4 class="text-xl">Comment by <%= comment.user.email %></h4>
+    <p class="comment text-md"><%= comment.body %></p>
+    <p class="sm:text-sm text-xs tracking-normal text-gray-600">Posted <%= distance_of_time_in_words(comment.post.created_at, comment.created_at) %> later</p>
+  </div>
+</div>

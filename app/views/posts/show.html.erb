@@ -1,17 +1,15 @@
-
-
 <div class="w-full mx-auto">
   <h2 class="text-center text-gray-900 text-4xl md:text-3xl font-bold tracking-wide"><%= @post.title %></h2>
   <p class="text-justify mt-5 text-gray-600 text-xl md:text-lg tracking-wide leading-8"><%= @post.content %></p>
   <%= image_tag(@post.image_as_thumbnail, class: 'mt-10', alt: 'image') %>
-
 </div>
 
 <div class="flex sm:flex-row sm:justify-between flex-col py-10">
   <div>
-      <p class="text-gray-900 sm:text-left text-right font-medium text-sm md:text-sm tracking-wide leading-8">Добавлено: <%= @post.created_at.strftime('%-d.%m.%Y, %H:%M') %></p>
-      <p class="text-gray-900 sm:text-left text-right mb-5 sm:mb-0 font-medium text-sm md:text-sm tracking-wide leading-8">Обновлено: <%= @post.updated_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+    <p class="text-gray-900 sm:text-left text-right font-medium text-sm md:text-sm tracking-wide leading-8">Добавлено: <%= @post.created_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+    <p class="text-gray-900 sm:text-left text-right mb-5 sm:mb-0 font-medium text-sm md:text-sm tracking-wide leading-8">Обновлено: <%= @post.updated_at.strftime('%-d.%m.%Y, %H:%M') %></p>
   </div>
+
   <div class="flex sm:flex-row py-3 flex-col items-end">
     <% if can? :update, @post %>
       <div>
@@ -24,4 +22,11 @@
       </div>
     <% end %>
   </div>
+
 </div>
+
+<h3 class="mb-3">Comments (<%= @post.comments.size %>)</h3>
+<%= render partial: 'posts/comment', collection: @post.comments.reverse %>
+<% if user_signed_in? %>
+  <%= render partial: 'comments/form' %>
+<% end %>
