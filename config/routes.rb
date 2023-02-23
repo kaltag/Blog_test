@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     get '/page/:page', action: :index, on: :collection
     resources :comments
   end
-  root 'posts#index'
+  resources :tags
 
   get '/access_denied', to: 'home#access_deny', as: :access_denied
 
+  root 'posts#index'
 end
