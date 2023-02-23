@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
   root 'posts#index'
 
+  get '/access_denied', to: 'home#access_deny', as: :access_denied
+
 end
