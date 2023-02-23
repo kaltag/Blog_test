@@ -1,21 +1,27 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto bg-white p-4 rounded-xl">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+
+
+<div class="w-full mx-auto">
+  <h2 class="text-center text-gray-900 text-4xl md:text-3xl font-bold tracking-wide"><%= @post.title %></h2>
+  <p class="text-justify mt-5 text-gray-600 text-xl md:text-lg tracking-wide leading-8"><%= @post.content %></p>
+  <%= image_tag(@post.image_as_thumbnail, class: 'mt-10', alt: 'image') %>
+
+</div>
+
+<div class="flex sm:flex-row sm:justify-between flex-col py-10">
+  <div>
+      <p class="text-gray-900 sm:text-left text-right font-medium text-sm md:text-sm tracking-wide leading-8">Добавлено: <%= @post.created_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+      <p class="text-gray-900 sm:text-left text-right mb-5 sm:mb-0 font-medium text-sm md:text-sm tracking-wide leading-8">Обновлено: <%= @post.updated_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+  </div>
+  <div class="flex sm:flex-row py-3 flex-col items-end">
+    <% if can? :update, @post %>
+      <div>
+        <%= link_to 'Редактировать', edit_post_path(@post), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' %>
+      </div>
     <% end %>
-
-    <%= render @post %>
-
-    <div class="mt-5">
-      <% if can? :edit, Post %>
-        <%= link_to 'Edit this post', edit_post_path(@post), class: 'relative py-2.5 px-5 border border-transparent border-black text-md md:text-sm leading-5 text-center font-medium rounded-md text-black bg-white hover:bg-gray-200 focus:outline-none focus:border-gray-700 focus:shadow-outline-green active:bg-gray-300 transition duration-150 ease-in-out' %>
-      <% end %>
-      <% if can? :destroy, Post %>
-        <div class="inline-block">
-          <%= button_to 'Destroy this post', post_path(@post), method: :delete, class: 'relative py-2.5 px-5 border border-transparent text-md md:text-sm leading-5 text-center font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-green active:bg-red-700 transition duration-150 ease-in-out' %>
-        </div>
-      <% end %>
-      <%= link_to 'Back to posts', posts_path, class: 'relative py-2.5 px-5 border border-transparent border-black text-md md:text-sm leading-5 text-center font-medium rounded-md text-black bg-white hover:bg-gray-200 focus:outline-none focus:border-gray-700 focus:shadow-outline-green active:bg-gray-300 transition duration-150 ease-in-out' %>
-    </div>
+    <% if can? :destroy, @post %>
+      <div class="sm:mx-5 mt-5 sm:mt-0">
+        <%= link_to 'Удалить', @post, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', method: :delete, data: { confirm: 'Вы уверены, что хотите удалить статью?' } %>
+      </div>
+    <% end %>
   </div>
 </div>

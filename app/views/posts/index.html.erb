@@ -4,7 +4,7 @@
       <h1 class="text-gray-900 font-extrabold text-5xl md:text-4xl pt-8">Блог</h1>
       <p class="text-gray-500 text-2xl md:text-xl font-normal my-5">Здесь представлены разного рода статьи, которые могут быть вам интересны!</p>
       <% if can? :create, Post %>
-        <%= link_to 'Добавить статью', new_post_path, class: 'bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-white' %>
+        <%= link_to 'Добавить статью', new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
       <% end %>
     </div>
     <div class="flex flex-col md:flex-row w-full mt-6 flex-wrap justify-around">
@@ -12,10 +12,10 @@
         <div class="bg-white md:w-96 h-auto mt-5 rounded-lg shadow-md overflow-hidden hover:shadow-sm">
           <%= link_to post, action: 'go' do %>
             <div>
-              <img class="object-center object-cover w-full h-48" src="<%#= post.image %>" alt="null avatar">
+              <%= image_tag(post.image_as_thumbnail, class: 'object-center object-cover w-full h-48', alt: 'image') %>
             </div>
             <div class="px-6 text-left pt-6">
-              <h1 class="text-sm md:text-base text-indigo-600 font-semibold text-center mb-5"><%= post.title %></h1>
+              <h1 class="text-sm md:text-base text-gray-600 font-semibold text-center mb-5"><%= post.title %></h1>
               <p class="text-sm text-gray-500 leading-6 text-left md:h-40 h-auto"><%= strip_tags(post.content).truncate(170) %></p>
             </div>
           <% end %>
@@ -32,7 +32,7 @@
       <h1 class="text-gray-900 font-extrabold text-5xl md:text-4xl">Блог</h1>
       <p class="text-gray-500 text-2xl md:text-xl font-normal my-10">Здесь пока нет статей, но скоро они появятся. Вы можете быть первым!</p>
       <% if can? :create, Post %>
-        <%= link_to 'Добавить статью', new_post_path, class: 'bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-white' %>
+        <%= link_to 'Добавить статью', new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
       <% end %>
     </div>
   <% end %>
