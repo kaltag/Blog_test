@@ -22,6 +22,11 @@
               <h1 class="text-sm md:text-base text-gray-600 font-semibold text-center mb-5"><%= post.title %></h1>
               <p class="text-sm text-gray-500 leading-6 text-left md:h-40 h-auto"><%= strip_tags(post.content).truncate(170) %></p>
             </div>
+            <p class="mt-5"> Tags:
+              <% post.tags.each do |tag| %>
+                <%= link_to tag.name, tag_path(tag), class: 'bg-gray-200 rounded-xl p-2 italic' %>
+              <% end %>
+            </p>
           <% end %>
           <div class="flex items-center px-4 mb-3 md:mt-5 mt-10 align-content">
             <div class="h-full">

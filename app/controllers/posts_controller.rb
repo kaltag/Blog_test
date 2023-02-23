@@ -11,10 +11,10 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comment.post_id = @post.id
   end
 
   def new
-    @post = Post.new
   end
 
   def edit
@@ -62,6 +62,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :image)
+    params.require(:post).permit(:title, :content, :user_id, :image, :tag_list)
   end
 end
