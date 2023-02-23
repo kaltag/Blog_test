@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
     @posts = Post.order(created_at: :desc).page params[:page]
@@ -52,8 +52,8 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def current_ability
+    @current_ability ||= PostAbility.new(current_user)
   end
 
   def post_params
