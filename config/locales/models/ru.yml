@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        current_password: "Текущий пароль"

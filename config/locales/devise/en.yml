@@ -24,6 +24,7 @@ en:
         log_in_button: "Log in"
         confirmation_message: "Didn't receive confirmation instructions?"
         unlock_message: "Didn't receive unlock instructions?"
+        create_account: "Create an account!"
 
     unlocks:
       new:

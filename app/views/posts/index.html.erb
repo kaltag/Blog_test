@@ -4,12 +4,12 @@
       <h1 class="text-gray-900 font-extrabold text-5xl md:text-4xl pt-8">Блог</h1>
       <p class="text-gray-500 text-2xl md:text-xl font-normal my-5">Здесь представлены разного рода статьи, которые могут быть вам интересны!</p>
       <% if can? :create, Post %>
-        <%= link_to 'Добавить статью', new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
+        <%= link_to t(:add_post), new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <%= link_to 'My posts', posts_path(user_id: current_user.id), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
-      <%= link_to 'All posts', posts_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
+      <%= link_to t(:my_posts), posts_path(user_id: current_user.id), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
+      <%= link_to t(:all_posts), posts_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
     <% end %>
     <div class="flex flex-col md:flex-row w-full mt-6 flex-wrap justify-around">
       <% @posts.each do |post| %>
@@ -22,7 +22,7 @@
               <h1 class="text-sm md:text-base text-gray-600 font-semibold text-center mb-5"><%= post.title %></h1>
               <p class="text-sm text-gray-500 leading-6 text-left md:h-40 h-auto"><%= strip_tags(post.content).truncate(170) %></p>
             </div>
-            <p class="mt-5"> Tags:
+            <p class="mt-5 ml-6"> <%= t(:tags) %>:
               <% post.tags.each do |tag| %>
                 <%= link_to tag.name, tag_path(tag), class: 'bg-gray-200 rounded-xl p-2 italic' %>
               <% end %>
@@ -41,7 +41,7 @@
       <h1 class="text-gray-900 font-extrabold text-5xl md:text-4xl">Блог</h1>
       <p class="text-gray-500 text-2xl md:text-xl font-normal my-10">Здесь пока нет статей, но скоро они появятся. Вы можете быть первым!</p>
       <% if can? :create, Post %>
-        <%= link_to 'Добавить статью', new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
+        <%= link_to t(:add_post), new_post_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-white' %>
       <% end %>
     </div>
   <% end %>
