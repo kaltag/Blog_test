@@ -24,6 +24,7 @@ ru:
         log_in_button: "Войти"
         confirmation_message: "Не получили инструкцию о подтверждении аккаунта?"
         unlock_message: "Не получили инструкции по разблокировке?"
+        create_account: "Создайте аккаунт!"
 
     unlocks:
       new:

@@ -6,26 +6,26 @@
 
 <div class="flex sm:flex-row sm:justify-between flex-col py-10">
   <div>
-    <p class="text-gray-900 sm:text-left text-right font-medium text-sm md:text-sm tracking-wide leading-8">Добавлено: <%= @post.created_at.strftime('%-d.%m.%Y, %H:%M') %></p>
-    <p class="text-gray-900 sm:text-left text-right mb-5 sm:mb-0 font-medium text-sm md:text-sm tracking-wide leading-8">Обновлено: <%= @post.updated_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+    <p class="text-gray-900 sm:text-left text-right font-medium text-sm md:text-sm tracking-wide leading-8"> <%= t(:added) %>: <%= @post.created_at.strftime('%-d.%m.%Y, %H:%M') %></p>
+    <p class="text-gray-900 sm:text-left text-right mb-5 sm:mb-0 font-medium text-sm md:text-sm tracking-wide leading-8"><%= t(:updated) %>: <%= @post.updated_at.strftime('%-d.%m.%Y, %H:%M') %></p>
   </div>
 
   <div class="flex sm:flex-row py-3 flex-col items-end">
     <% if can? :update, @post %>
       <div>
-        <%= link_to 'Редактировать', edit_post_path(@post), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' %>
+        <%= link_to t(:edit), edit_post_path(@post), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' %>
       </div>
     <% end %>
     <% if can? :destroy, @post %>
       <div class="sm:mx-5 mt-5 sm:mt-0">
-        <%= link_to 'Удалить', @post, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', method: :delete, data: { confirm: 'Вы уверены, что хотите удалить статью?' } %>
+        <%= link_to t(:delete), @post, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded', method: :delete, data: { confirm: 'Вы уверены, что хотите удалить статью?' } %>
       </div>
     <% end %>
   </div>
 
 </div>
 
-<h3 class="mb-3">Comments (<%= @post.comments.size %>)</h3>
+<h3 class="mb-3"><%= t(:comments) %> (<%= @post.comments.size %>)</h3>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
 <% if user_signed_in? %>
   <%= render partial: 'comments/form' %>
