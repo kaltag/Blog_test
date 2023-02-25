@@ -12,7 +12,6 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :content, presence: true, length: { minimum: 20 }
   validates :image, content_type: ['image/png', 'image/jpeg', 'image/jpg']
-  validates :tags, presence: true
 
   def tag_list
     tags.collect(&:name).join(', ')
